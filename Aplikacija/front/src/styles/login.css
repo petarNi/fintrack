@@ -1,0 +1,95 @@
+.login {
+  min-height: calc(100vh - 120px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-8) var(--sp-4);
+}
+
+.login__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--sp-6);
+  width: min(1100px, 100%);
+}
+
+.login__hero {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  padding: var(--sp-6);
+  border-radius: var(--radius);
+  border: 1px solid rgba(0, 217, 255, 0.16);
+  background: linear-gradient(160deg, rgba(0, 217, 255, 0.12), rgba(0, 255, 136, 0.08));
+  box-shadow: var(--shadow);
+}
+
+.login__title {
+  margin: 0;
+  font-size: clamp(32px, 5vw, 46px);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.login__subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--fs-md);
+}
+
+.login__bullets {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: var(--sp-2);
+  color: var(--muted);
+  font-size: var(--fs-sm);
+}
+
+.login__card .card__body {
+  padding: var(--sp-6);
+  gap: var(--sp-4);
+}
+
+.login__form {
+  display: grid;
+  gap: var(--sp-4);
+}
+
+.login__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.login__field label {
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(230, 246, 239, 0.6);
+}
+
+.login__actions {
+  display: flex;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+}
+
+.login__actions .btn {
+  flex: 1 1 200px;
+}
+
+@media (max-width: 720px) {
+  .login {
+    padding-inline: var(--sp-3);
+  }
+
+  .login__actions {
+    flex-direction: column;
+  }
+
+  .login__actions .btn {
+    width: 100%;
+  }
+}

@@ -1,0 +1,246 @@
+.home-logged {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--sp-8) var(--sp-4) var(--sp-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+}
+
+.home-logged__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.home-logged__welcome {
+  font-size: clamp(var(--fs-xl), 5vw, 48px);
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-shadow: 0 0 12px rgba(0, 255, 136, 0.25);
+}
+
+.home-logged__subtitle {
+  color: var(--muted);
+  max-width: 620px;
+}
+
+.home-logged__pulse {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 12px rgba(0, 255, 136, 0.8);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.7);
+    opacity: 0.6;
+  }
+}
+
+.home-logged__status {
+  color: var(--muted);
+  font-size: var(--fs-lg);
+}
+
+.home-logged__summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--sp-4);
+  
+}
+
+.metric-card {
+  position: relative;
+  padding: var(--sp-6);
+  background: linear-gradient(160deg, rgba(0, 255, 136, 0.12), rgba(0, 217, 255, 0.08));
+  border-radius: var(--radius);
+  border: 1px solid rgba(0, 255, 136, 0.25);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.metric-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent, rgba(0, 255, 136, 0.18));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.metric-card:hover::after {
+  opacity: 1;
+}
+
+.metric-card--accent {
+  border-color: rgba(0, 217, 255, 0.4);
+  background: linear-gradient(160deg, rgba(0, 217, 255, 0.12), rgba(0, 255, 136, 0.06));
+}
+
+.metric-card--muted {
+  border-color: rgba(159, 183, 175, 0.3);
+  background: linear-gradient(160deg, rgba(24, 24, 24, 0.95), rgba(17, 17, 17, 0.85));
+}
+
+.metric-card__label {
+  font-size: var(--fs-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(230, 246, 239, 0.7);
+  margin: 0 0 var(--sp-2);
+}
+
+.metric-card__value {
+  margin: 0;
+  font-size: clamp(26px, 4vw, 34px);
+  font-family: 'Roboto Mono', monospace;
+  color: var(--text);
+}
+
+.home-logged__cta {
+  padding: 0;
+}
+
+.home-logged__cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-6);
+}
+
+.home-logged__cta-title {
+  margin: 0 0 var(--sp-2);
+  font-size: var(--fs-xl);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.home-logged__cta-text {
+  margin: 0;
+  color: var(--muted);
+}
+
+.home-logged__cta-button {
+  min-width: 220px;
+  font-size: var(--fs-md);
+  box-shadow: var(--glow);
+}
+
+.home-logged__balances {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--sp-4);
+}
+
+.balance-card {
+  padding: 0;
+}
+
+.balance-card .card__body {
+  gap: 0;
+  padding: 0;
+}
+
+.balance-card__grid {
+  display: grid;
+  grid-template-columns: minmax(200px, 320px) 1fr;
+  gap: var(--sp-6);
+  padding: var(--sp-6);
+}
+
+.balance-card__metrics {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.balance-card__metric {
+  padding-bottom: var(--sp-3);
+  border-bottom: 1px solid rgba(0, 255, 136, 0.12);
+}
+
+.balance-card__metric:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.balance-card__label {
+  margin: 0 0 var(--sp-1);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(230, 246, 239, 0.6);
+  font-size: var(--fs-xs);
+}
+
+.balance-card__value {
+  margin: 0;
+  font-family: 'Roboto Mono', monospace;
+  font-size: var(--fs-lg);
+}
+
+.balance-card__value--positive {
+  color: var(--primary);
+}
+
+.balance-card__value--negative {
+  color: var(--danger);
+}
+
+.balance-card__chart {
+  min-height: 260px;
+}
+
+.balance-card__legend-text {
+  color: var(--muted);
+  font-size: var(--fs-sm);
+}
+
+.balance-card__empty {
+  margin: 0;
+  padding: var(--sp-6);
+  text-align: center;
+  color: var(--muted);
+}
+
+@media (max-width: 960px) {
+  .home-logged__cta-inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .home-logged__cta-button {
+    width: 100%;
+  }
+
+  .balance-card__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .home-logged {
+    padding-inline: var(--sp-3);
+  }
+
+  .home-logged__summary {
+    grid-template-columns: 1fr;
+  }
+
+  .home-logged__balances {
+    grid-template-columns: 1fr;
+  }
+}
+.home-logged__cta .card__body {
+  padding: var(--sp-6);
+}
