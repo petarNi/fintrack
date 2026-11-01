@@ -1,150 +1,108 @@
-# FinTrack – SW2025
+# FinTrack
 
-FinTrack je informacioni sistem za upravljanje ličnim finansijama razvijen u okviru predmeta **Softversko inženjerstvo** na Elektronskom fakultetu Univerziteta u Nišu.
+A full-stack personal finance management app for tracking income, expenses and transfers, with categorized transactions and visual spending statistics.
 
-Projekat omogućava korisnicima da prate svoje prihode, rashode i transfere, organizuju transakcije po kategorijama i analiziraju svoje finansijske navike kroz pregled statistike i izveštaja.
+![.NET](https://img.shields.io/badge/.NET_8-512BD4?style=flat&logo=dotnet&logoColor=white)
+![C#](https://img.shields.io/badge/C%23-239120?style=flat&logo=csharp&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)
+![SQL Server](https://img.shields.io/badge/SQL_Server-CC2927?style=flat&logo=microsoftsqlserver&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-000000?style=flat&logo=jsonwebtokens&logoColor=white)
 
-## ✨ Glavne funkcionalnosti
+> Team project developed for the *Software Engineering* course at the Faculty of Electronic Engineering, University of Niš.
 
-### 👤 Upravljanje korisnicima
+## Screenshots
 
-* Registracija korisnika
-* Prijava i odjava sa sistema
-* JWT autentifikacija i autorizacija
-* Administratorske privilegije
+| Dashboard | Transactions |
+|-----------|--------------|
+| ![Dashboard](docs/screenshots/dashboard.png) | ![Transactions](docs/screenshots/transactions.png) |
 
-### 💰 Upravljanje transakcijama
+## Features
 
-* Evidencija prihoda
-* Evidencija rashoda
-* Evidencija transfera između računa
-* Pregled svih transakcija
-* Izmena i brisanje transakcija
-* Filtriranje i pretraga podataka
+- **Authentication** – user registration and login secured with JWT, role-based access with admin privileges
+- **Transactions** – record income, expenses and transfers between accounts; edit, delete, filter and search
+- **Categories** – create and manage custom categories to organize transactions
+- **Statistics** – income vs. expense analysis and per-category breakdowns with interactive charts
 
-### 📂 Kategorije
+## Tech Stack
 
-* Kreiranje kategorija transakcija
-* Izmena i brisanje kategorija
-* Organizacija transakcija po kategorijama
+| Layer | Technologies |
+|-------|--------------|
+| Frontend | React, Vite, JavaScript, React Router, Axios, Recharts |
+| Backend | ASP.NET Core 8 Web API, Entity Framework Core, JWT Authentication |
+| Database | Microsoft SQL Server (LocalDB) |
+| Tools | Visual Studio, VS Code, Git, GitHub |
 
-### 📊 Statistika i analiza
+## Architecture
 
-* Pregled finansijskih podataka
-* Statistika po kategorijama
-* Analiza prihoda i rashoda
-* Vizuelni prikaz podataka
-
-## 🏗 Arhitektura sistema
-
-Sistem je razvijen kao višeslojna web aplikacija:
+The application follows a client–server architecture with a RESTful API:
 
 ```text
-React + Vite (Frontend)
-        ↓
+React + Vite (SPA)
+        │  HTTP / JSON
+        ▼
 ASP.NET Core Web API (.NET 8)
-        ↓
-Entity Framework Core
-        ↓
-Relaciona baza podataka
+        │
+        ▼
+Entity Framework Core (Code First, migrations)
+        │
+        ▼
+SQL Server
 ```
 
-## 📂 Struktura repozitorijuma
+## Getting Started
 
-```text
-SW2025
-│
-├── front/                 # React frontend aplikacija
-├── back/
-│   └── FinTrack/          # ASP.NET Core Web API
-│
-├── Dokumentacija/
-│   ├── Vizija sistema
-│   ├── Specifikacija zahteva
-│   ├── Arhitekturni projekat
-│   ├── Plan testiranja
-│   └── Korisničko uputstvo
-│
-└── README.md
-```
+### Prerequisites
 
-## 🛠 Korišćene tehnologije
+- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+- [Node.js](https://nodejs.org/) 18 or newer
+- SQL Server LocalDB (installed with Visual Studio)
+- EF Core CLI: `dotnet tool install --global dotnet-ef`
 
-### Frontend
-
-* React
-* Vite
-* JavaScript
-* Axios
-* React Router
-* Recharts
-
-### Backend
-
-* ASP.NET Core 8
-* Entity Framework Core
-* JWT Authentication
-* REST API
-
-### Alati
-
-* Visual Studio
-* Visual Studio Code
-* Git
-* GitHub
-
-## ▶️ Pokretanje projekta
-
-### Backend
-
-Pokrenuti API:
+### 1. Clone the repository
 
 ```bash
-cd back/FinTrack
+git clone https://github.com/petarNi/fintrack.git
+cd fintrack
+```
+
+### 2. Run the backend
+
+```bash
+cd Aplikacija/back/FinTrack
 dotnet restore
+dotnet ef database update
 dotnet run
 ```
 
-Backend će biti dostupan na adresi definisanoj u konfiguraciji projekta.
+The API runs at `https://localhost:7112`.
 
-### Frontend
-
-Pokrenuti React aplikaciju:
+### 3. Run the frontend
 
 ```bash
-cd front
+cd Aplikacija/front
 npm install
 npm run dev
 ```
 
-Frontend će biti dostupan na:
+The app runs at `http://localhost:5173`.
+
+## Project Structure
 
 ```text
-http://localhost:5173
+fintrack/
+├── Aplikacija/
+│   ├── back/FinTrack/     # ASP.NET Core Web API (Controllers, Models, Data, Migrations)
+│   └── front/             # React + Vite client
+├── Dokumentacija/         # Project documentation (in Serbian)
+└── README.md
 ```
 
-## 📑 Dokumentacija
+## Documentation
 
-U okviru projekta izrađena je kompletna projektna dokumentacija koja obuhvata:
+Full project documentation (in Serbian) is available in [`Dokumentacija/`](Dokumentacija/) and includes the system vision, requirements specification, architecture design, test plan and user manual.
 
-* Viziju sistema,
-* Specifikaciju zahteva,
-* Arhitekturni projekat,
-* Plan testiranja,
-* Korisničko uputstvo.
+## Team
 
-## 👥 Tim
-
-Ovaj projekat je realizovan kao timski rad u okviru predmeta **Softversko inženjerstvo**.
-
-### Članovi tima
-
-* Petar Nikolić
-* Aleksa Nešić
-* Nikola Tančić
-
-Elektronski fakultet Univerziteta u Nišu
-
----
-
-**FinTrack** je razvijen sa ciljem da korisnicima omogući jednostavno upravljanje ličnim finansijama, bolji uvid u potrošačke navike i efikasnije planiranje budžeta kroz moderno web okruženje.
+- **Petar Nikolić** – [@petarNi](https://github.com/petarNi)
+- Aleksa Nešić
+- Nikola Tančić
